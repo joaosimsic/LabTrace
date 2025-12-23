@@ -1,5 +1,5 @@
 import express from "express";
-import { initMongoConnection } from "./adapters/infrastructure/db/mongoConnection";
+import { initMongoConnection } from "./infrastructure/db/mongoConnection";
 
 class App {
 	app;
