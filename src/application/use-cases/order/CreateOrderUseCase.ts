@@ -3,7 +3,7 @@ import { Order } from "../../../domain/entities/Order";
 import { IOrderRepository } from "../../../domain/repositories/IOrderRepository";
 import { Service } from "../../../domain/entities/Service";
 
-interface CreateOrderInput {
+interface DTO {
 	lab: string;
 	patient: string;
 	customer: string;
@@ -16,18 +16,23 @@ export class CreateOrderUseCase {
 		@inject("OrderRepository") private orderRepository: IOrderRepository,
 	) { }
 
-	async execute(input: CreateOrderInput): Promise<void> {
-		const services = input.services.map(
+	async execute({
+		lab,
+		patient,
+		customer,
+		services,
+	}: DTO): Promise<void> {
+		const servicesArr = services.map(
 			(s) => new Service(s.name, s.value, "PENDING"),
 		);
 
 		const order = new Order(
-			input.lab,
-			input.patient,
-			input.customer,
+			lab,
+			patient,
+			customer,
 			"CREATED",
 			"ACTIVE",
-			services,
+			servicesArr,
 		);
 
 		await this.orderRepository.save(order);

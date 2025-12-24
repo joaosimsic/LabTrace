@@ -3,7 +3,7 @@ import { IOrderRepository } from "../../../domain/repositories/IOrderRepository"
 import { OrderState } from "../../../domain/value-objects/order/OrderState";
 import { Order } from "../../../domain/entities/Order";
 
-interface ListAllOrdersInput {
+interface DTO {
 	state?: OrderState;
 }
 
@@ -13,7 +13,7 @@ export class ListAllOrdersUseCase {
 		@inject("OrderRepository") private orderRepository: IOrderRepository,
 	) { }
 
-	async execute(input: ListAllOrdersInput): Promise<Order[]> {
-		return await this.orderRepository.findAll(input);
+	async execute(filter: DTO): Promise<Order[]> {
+		return await this.orderRepository.findAll(filter);
 	}
 }
