@@ -15,6 +15,7 @@ export default [
 			"no-unused-vars": "error",
 			"prefer-const": "error",
 			"@typescript-eslint/no-inferrable-types": "warn",
+			"@typescript-eslint/explicit-function-return-type": "error",
 		},
 	},
 	pluginJs.configs.recommended,
