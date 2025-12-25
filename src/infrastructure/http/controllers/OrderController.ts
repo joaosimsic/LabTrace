@@ -55,6 +55,10 @@ export class OrderController {
 		try {
 			const { id } = req.params;
 
+			if (!id) {
+				throw new AppError("Missing order's id", 400);
+			}
+
 			await this.advanceOrderStateUseCase.execute(id);
 
 			return res.status(200).json({ message: "Order state was advanced" });
