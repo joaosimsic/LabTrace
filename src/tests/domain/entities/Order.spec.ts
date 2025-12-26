@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { Order } from "../../../domain/entities/Order";
-import { Service } from "../../../domain/entities/Service";
-import { AppError } from "../../../shared/errors/AppError";
-import { OrderState } from "../../../domain/value-objects/order/OrderState";
+import { Order } from "@domain/entities/Order";
+import { Service } from "@domain/entities/Service";
+import { AppError } from "@shared/errors/AppError";
+import { OrderState } from "@domain/value-objects/order/OrderState";
 
 describe("Order Entity", () => {
 	const createOrder = (state: OrderState = "CREATED"): Order => {

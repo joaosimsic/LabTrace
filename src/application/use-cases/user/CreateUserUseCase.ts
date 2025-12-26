@@ -1,8 +1,8 @@
 import { injectable, inject } from "tsyringe";
 import bcrypt from "bcryptjs";
-import { IUserRepository } from "../../../domain/repositories/IUserRepository";
-import { User } from "../../../domain/entities/User";
-import { AppError } from "../../../shared/errors/AppError";
+import { IUserRepository } from "@domain/repositories/IUserRepository";
+import { User } from "@domain/entities/User";
+import { AppError } from "@shared/errors/AppError";
 
 interface DTO {
 	email: string;

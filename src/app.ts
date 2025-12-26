@@ -1,11 +1,11 @@
 import "reflect-metadata";
-import "./shared/container";
+import "@/shared/container";
 import express, { Application } from "express";
-import { initMongoConnection } from "./infrastructure/db/mongoConnection";
-import { orderRoutes } from "./infrastructure/http/routes/orderRoutes";
-import { authRoutes } from "./infrastructure/http/routes/authRoutes";
+import { initMongoConnection } from "@infrastructure/db/mongoConnection";
+import { orderRoutes } from "@infrastructure/http/routes/orderRoutes";
+import { authRoutes } from "@infrastructure/http/routes/authRoutes";
 import { Request, Response, NextFunction } from "express";
-import { handleHttpError } from "./infrastructure/http/utils/ErrorHandler";
+import { handleHttpError } from "@infrastructure/http/utils/ErrorHandler";
 
 class App {
 	app: Application;

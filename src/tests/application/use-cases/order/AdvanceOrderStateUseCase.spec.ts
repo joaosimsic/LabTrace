@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { AdvanceOrderStateUseCase } from "../../../../application/use-cases/order/AdvanceOrderStateUseCase";
-import { IOrderRepository } from "../../../../domain/repositories/IOrderRepository";
-import { Order } from "../../../../domain/entities/Order";
-import { AppError } from "../../../../shared/errors/AppError";
+import { AdvanceOrderStateUseCase } from "@application/use-cases/order/AdvanceOrderStateUseCase";
+import { IOrderRepository } from "@domain/repositories/IOrderRepository";
+import { Order } from "@domain/entities/Order";
+import { AppError } from "@shared/errors/AppError";
 
 describe("AdvanceOrderStateUseCase", () => {
 	let sut: AdvanceOrderStateUseCase;

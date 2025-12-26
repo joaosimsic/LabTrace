@@ -1,10 +1,10 @@
 import { Response } from "express";
-import { AppError } from "../../../shared/errors/AppError";
-import { ZodError } from "zod"; //
+import { AppError } from "@shared/errors/AppError";
+import { ZodError } from "zod"; 
 
 export const handleHttpError = (err: unknown, res: Response): Response => {
     if (err instanceof AppError) {
-        return res.status(err.statusCode).json({ error: err.message }); //
+        return res.status(err.statusCode).json({ error: err.message }); 
     }
 
     if (err instanceof ZodError) {
@@ -21,7 +21,7 @@ export const handleHttpError = (err: unknown, res: Response): Response => {
 
     if (err instanceof Error) {
         if (err.name === "ValidationError" || err.name === "CastError") {
-            return res.status(400).json({ error: "Invalid data format or ID" }); //
+            return res.status(400).json({ error: "Invalid data format or ID" }); 
         }
 
         console.error(err.stack);
@@ -31,5 +31,5 @@ export const handleHttpError = (err: unknown, res: Response): Response => {
         }); 
     }
 
-    return res.status(500).json({ error: "An unexpected error occured" }); //
+    return res.status(500).json({ error: "An unexpected error occured" }); 
 };

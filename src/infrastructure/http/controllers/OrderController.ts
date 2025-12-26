@@ -1,11 +1,11 @@
 import { injectable } from "tsyringe";
 import { Request, Response } from "express";
-import { CreateOrderUseCase } from "../../../application/use-cases/order/CreateOrderUseCase";
-import { GetOrdersUseCase } from "../../../application/use-cases/order/GetOrdersUseCase";
+import { CreateOrderUseCase } from "@application/use-cases/order/CreateOrderUseCase";
+import { GetOrdersUseCase } from "@application/use-cases/order/GetOrdersUseCase";
 import { handleHttpError } from "../utils/ErrorHandler";
-import { OrderState } from "../../../domain/value-objects/order/OrderState";
-import { AppError } from "../../../shared/errors/AppError";
-import { AdvanceOrderStateUseCase } from "../../../application/use-cases/order/AdvanceOrderStateUseCase";
+import { OrderState } from "@domain/value-objects/order/OrderState";
+import { AppError } from "@shared/errors/AppError";
+import { AdvanceOrderStateUseCase } from "@application/use-cases/order/AdvanceOrderStateUseCase";
 import { z } from "zod";
 
 @injectable()

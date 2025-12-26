@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { handleHttpError } from "../utils/ErrorHandler";
-import { AppError } from "../../../shared/errors/AppError";
+import { AppError } from "@shared/errors/AppError";
 
 interface IPayload {
 	sub: string;

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { CreateOrderUseCase } from "../../../../application/use-cases/order/CreateOrderUseCase";
-import { IOrderRepository } from "../../../../domain/repositories/IOrderRepository";
+import { CreateOrderUseCase } from "@application/use-cases/order/CreateOrderUseCase";
+import { IOrderRepository } from "@domain/repositories/IOrderRepository";
 
 describe("CreateOrderUseCase", () => {
 	let createOrderUseCase: CreateOrderUseCase;

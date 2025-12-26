@@ -1,9 +1,9 @@
 import { injectable } from "tsyringe";
-import { IOrderRepository } from "../../../domain/repositories/IOrderRepository";
-import { Order } from "../../../domain/entities/Order";
+import { IOrderRepository } from "@domain/repositories/IOrderRepository";
+import { Order } from "@domain/entities/Order";
 import { OrderModel, IOrderDocument } from "../models/OrderModel";
-import { OrderState } from "../../../domain/value-objects/order/OrderState";
-import { Service } from "../../../domain/entities/Service";
+import { OrderState } from "@domain/value-objects/order/OrderState";
+import { Service } from "@domain/entities/Service";
 
 @injectable()
 export class OrderRepository implements IOrderRepository {

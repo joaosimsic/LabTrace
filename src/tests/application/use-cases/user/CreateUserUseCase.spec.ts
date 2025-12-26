@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { CreateUserUseCase } from "../../../../application/use-cases/user/CreateUserUseCase";
-import { IUserRepository } from "../../../../domain/repositories/IUserRepository";
-import { AppError } from "../../../../shared/errors/AppError";
-import { User } from "../../../../domain/entities/User";
+import { CreateUserUseCase } from "@application/use-cases/user/CreateUserUseCase";
+import { IUserRepository } from "@domain/repositories/IUserRepository";
+import { AppError } from "@shared/errors/AppError";
+import { User } from "@domain/entities/User";
 
 describe("CreateUserUseCase", () => {
 	let createUserUseCase: CreateUserUseCase;

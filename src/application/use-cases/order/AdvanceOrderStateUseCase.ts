@@ -1,6 +1,6 @@
 import { injectable, inject } from "tsyringe";
-import { IOrderRepository } from "../../../domain/repositories/IOrderRepository";
-import { AppError } from "../../../shared/errors/AppError";
+import { IOrderRepository } from "@domain/repositories/IOrderRepository";
+import { AppError } from "@shared/errors/AppError";
 
 @injectable()
 export class AdvanceOrderStateUseCase {

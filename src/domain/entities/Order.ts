@@ -1,6 +1,6 @@
 import { OrderState } from "../value-objects/order/OrderState";
 import { OrderStatus } from "../value-objects/order/OrderStatus";
-import { AppError } from "../../shared/errors/AppError";
+import { AppError } from "@shared/errors/AppError";
 import { Service } from "./Service";
 
 export class Order {

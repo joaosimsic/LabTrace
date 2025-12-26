@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { OrderState } from "../../../domain/value-objects/order/OrderState";
-import { OrderStatus } from "../../../domain/value-objects/order/OrderStatus";
+import { OrderState } from "@domain/value-objects/order/OrderState";
+import { OrderStatus } from "@domain/value-objects/order/OrderStatus";
 
 export interface IOrderDocument extends Document {
 	lab: string;

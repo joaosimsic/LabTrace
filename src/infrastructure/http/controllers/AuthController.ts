@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { injectable } from "tsyringe";
-import { CreateUserUseCase } from "../../../application/use-cases/user/CreateUserUseCase";
-import { LoginUserUseCase } from "../../../application/use-cases/user/LoginUserUseCase";
+import { CreateUserUseCase } from "@application/use-cases/user/CreateUserUseCase";
+import { LoginUserUseCase } from "@application/use-cases/user/LoginUserUseCase";
 import { handleHttpError } from "../utils/ErrorHandler";
-import { AppError } from "../../../shared/errors/AppError";
+import { AppError } from "@shared/errors/AppError";
 import validator from "validator";
 import { z } from "zod";
 

@@ -1,7 +1,7 @@
 import { injectable, inject } from "tsyringe";
-import { Order } from "../../../domain/entities/Order";
-import { IOrderRepository } from "../../../domain/repositories/IOrderRepository";
-import { Service } from "../../../domain/entities/Service";
+import { Order } from "@domain/entities/Order";
+import { IOrderRepository } from "@domain/repositories/IOrderRepository";
+import { Service } from "@domain/entities/Service";
 
 interface DTO {
 	lab: string;
