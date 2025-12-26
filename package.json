@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node --project tsconfig.json src/server.ts"
+    "dev": "nodemon --exec ts-node --project tsconfig.json src/server.ts",
+		"test": "vitest"
   },
   "repository": {
     "type": "git",
