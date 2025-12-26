@@ -10,11 +10,10 @@ describe("AdvanceOrderStateUseCase", () => {
 
 	beforeEach(() => {
 		orderRepositoryMock = {
-			save: vi.fn(),
-			get: vi.fn(),
 			findById: vi.fn(),
 			update: vi.fn(),
-		};
+		} as unknown as IOrderRepository;
+
 		sut = new AdvanceOrderStateUseCase(orderRepositoryMock);
 	});
 
