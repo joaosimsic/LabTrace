@@ -7,6 +7,7 @@ import {
 	createOrderSchema,
 	getOrdersSchema,
 	advanceOrderSchema,
+	advanceServiceSchema,
 } from "../validators/OrderValidator";
 
 const orderRoutes = Router();
@@ -24,6 +25,10 @@ orderRoutes.patch(
 	"/:id/advance",
 	validationMiddleware(advanceOrderSchema),
 	(req, res) => orderController.advance(req, res),
+);
+
+orderRoutes.patch("/", validationMiddleware(advanceServiceSchema), (req, res) =>
+	orderController.advanceService(req, res),
 );
 
 export { orderRoutes };
