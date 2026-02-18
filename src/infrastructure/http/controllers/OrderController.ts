@@ -4,16 +4,16 @@ import { CreateOrderUseCase } from "@application/use-cases/order/CreateOrderUseC
 import { GetOrdersUseCase } from "@application/use-cases/order/GetOrdersUseCase";
 import { handleHttpError } from "../utils/ErrorHandler";
 import { AdvanceOrderStateUseCase } from "@application/use-cases/order/AdvanceOrderStateUseCase";
-import { AddServiceUseCase } from "@/application/use-cases/order/AddServiceUseCase";
+import { DeleteOrderUseCase } from "@application/use-cases/order/DeleteOrderUseCase";
 
 @injectable()
 export class OrderController {
-  constructor(
-    private createOrderUseCase: CreateOrderUseCase,
-    private getOrdersUseCase: GetOrdersUseCase,
-    private advanceOrderStateUseCase: AdvanceOrderStateUseCase,
-    private addServiceUseCase: AddServiceUseCase,
-  ) {}
+	constructor(
+		private createOrderUseCase: CreateOrderUseCase,
+		private getOrdersUseCase: GetOrdersUseCase,
+		private advanceOrderStateUseCase: AdvanceOrderStateUseCase,
+		private deleteOrderUseCase: DeleteOrderUseCase,
+	) { }
 
   async create(req: Request, res: Response): Promise<Response> {
     try {
@@ -41,21 +41,21 @@ export class OrderController {
 
       await this.advanceOrderStateUseCase.execute(id);
 
-      return res.status(200).json({ message: "Order state was advanced" });
-    } catch (err: unknown) {
-      return handleHttpError(err, res);
-    }
-  }
+			return res.status(200).json({ message: "Order state was advanced" });
+		} catch (err: unknown) {
+			return handleHttpError(err, res);
+		}
+	}
 
-  async addService(req: Request, res: Response): Promise<Response> {
-    try {
-      const { id, service } = req.body;
+	async delete(req: Request, res: Response): Promise<Response> {
+		try {
+			const { id } = req.params;
 
-      await this.addServiceUseCase.execute(id, service);
+			await this.deleteOrderUseCase.execute(id);
 
-      return res.status(200).json({ message: "Service added" });
-    } catch (err: unknown) {
-      return handleHttpError(err, res);
-    }
-  }
+			return res.status(200).json({ message: "Order deleted"});
+		} catch (err: unknown) {
+			return handleHttpError(err, res);
+		}
+	}
 }

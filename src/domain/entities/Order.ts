@@ -27,14 +27,10 @@ export class Order {
       throw new AppError(`Cannot advance order state from ${this.state}`);
     }
 
-    this.state = nextState;
-  }
+		this.state = nextState;
+	}
 
-  public addService(service: Service): void {
-    if (!service) {
-      throw new AppError(`Invalid service`);
-    }
-
-    this.services.push(service);
-  }
+	public delete(): void {
+		this.status = "DELETED";
+	}
 }

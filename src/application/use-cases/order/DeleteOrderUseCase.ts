@@ -1,9 +1,9 @@
 import { injectable, inject } from "tsyringe";
 import { IOrderRepository } from "@domain/repositories/IOrderRepository";
-import { AppError } from "@application/exceptions/AppError";
+import { AppError } from "@shared/errors/AppError";
 
 @injectable()
-export class AdvanceOrderStateUseCase {
+export class DeleteOrderUseCase {
 	constructor(
 		@inject("OrderRepository") private orderRepository: IOrderRepository,
 	) { }
@@ -15,11 +15,11 @@ export class AdvanceOrderStateUseCase {
 			throw new AppError("Order not found", 404);
 		}
 
-		if (order.status !== "ACTIVE") {
-			throw new AppError("Order is not active", 403);
+		if (order.state === "COMPLETED") {
+			throw new AppError("Completed orders cannot be deleted", 403);
 		}
 
-		order.advanceState();
+		order.delete();
 
 		await this.orderRepository.update(id, order);
 	}

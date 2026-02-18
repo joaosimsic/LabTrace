@@ -33,4 +33,10 @@ orderRoutes.patch(
   (req, res) => orderController.addService(req, res),
 );
 
+orderRoutes.delete(
+	"/:id",
+	validationMiddleware(advanceOrderSchema),
+	(req, res) => orderController.delete(req, res),
+);
+
 export { orderRoutes };
