@@ -35,16 +35,11 @@ export const advanceOrderSchema = z.object({
   }),
 });
 
-export const addServiceSchema = z.object({
-  body: z.object({
-    id: z.string().refine((val) => isMongoId(val), {
-      message: "Invalid Order ID format",
-    }),
-    service: z.object({
-      name: z.string().min(1, "Service name is required"),
-      value: z.number().positive("Service value must be greater than zero"),
-      status: z.enum(SERVICE_STATUS_VALUES),
-    }),
-  }),
+export const advanceServiceSchema = z.object({
+	body: z.object({
+		id: z.string().refine((val) => isMongoId(val), {
+			message: "Invalid Order ID format",
+		}),
+		name: z.string().min(1, "Name field is required"),
+	}),
 });
-

@@ -4,7 +4,7 @@ import { CreateOrderUseCase } from "@application/use-cases/order/CreateOrderUseC
 import { GetOrdersUseCase } from "@application/use-cases/order/GetOrdersUseCase";
 import { handleHttpError } from "../utils/ErrorHandler";
 import { AdvanceOrderStateUseCase } from "@application/use-cases/order/AdvanceOrderStateUseCase";
-import { DeleteOrderUseCase } from "@application/use-cases/order/DeleteOrderUseCase";
+import { AdvanceServiceStatusUseCase } from "@application/use-cases/order/AdvanceServiceStatusUseCase";
 
 @injectable()
 export class OrderController {
@@ -12,7 +12,7 @@ export class OrderController {
 		private createOrderUseCase: CreateOrderUseCase,
 		private getOrdersUseCase: GetOrdersUseCase,
 		private advanceOrderStateUseCase: AdvanceOrderStateUseCase,
-		private deleteOrderUseCase: DeleteOrderUseCase,
+		private advanceServiceStatusUseCase: AdvanceServiceStatusUseCase,
 	) { }
 
   async create(req: Request, res: Response): Promise<Response> {
@@ -47,13 +47,13 @@ export class OrderController {
 		}
 	}
 
-	async delete(req: Request, res: Response): Promise<Response> {
+	async advanceService(req: Request, res: Response): Promise<Response> {
 		try {
-			const { id } = req.params;
+			const { id, name } = req.body;
 
-			await this.deleteOrderUseCase.execute(id);
+			await this.advanceServiceStatusUseCase.execute(id, name);
 
-			return res.status(200).json({ message: "Order deleted"});
+			return res.status(200).json({ message: "Service status was advanced" });
 		} catch (err: unknown) {
 			return handleHttpError(err, res);
 		}

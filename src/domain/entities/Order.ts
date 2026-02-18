@@ -14,18 +14,29 @@ export class Order {
     public readonly id?: string,
   ) {}
 
-  public advanceState(): void {
-    const nextStateMap: Record<OrderState, OrderState | null> = {
-      CREATED: "ANALYSIS",
-      ANALYSIS: "COMPLETED",
-      COMPLETED: null,
-    };
+	private allServicesDone(): boolean {
+		return this.services.every((s) => s.status === "DONE");
+	}
+
+	public advanceState(): void {
+		const nextStateMap: Record<OrderState, OrderState | null> = {
+			CREATED: "ANALYSIS",
+			ANALYSIS: "COMPLETED",
+			COMPLETED: null,
+		};
 
     const nextState = nextStateMap[this.state];
 
-    if (!nextState) {
-      throw new AppError(`Cannot advance order state from ${this.state}`);
-    }
+		if (!nextState) {
+			throw new AppError(`Cannot advance order state from ${this.state}`, 403);
+		}
+
+		if (nextState === "COMPLETED" && !this.allServicesDone()) {
+			throw new AppError(
+				"All services must be completed before finishing the order",
+				403,
+			);
+		}
 
 		this.state = nextState;
 	}

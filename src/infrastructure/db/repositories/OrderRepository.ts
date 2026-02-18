@@ -4,6 +4,7 @@ import { Order } from "@domain/entities/Order";
 import { OrderModel, IOrderDocument } from "../models/OrderModel";
 import { OrderState } from "@domain/value-objects/order/OrderState";
 import { Service } from "@domain/entities/Service";
+import { AppError } from "@/shared/errors/AppError";
 
 @injectable()
 export class OrderRepository implements IOrderRepository {

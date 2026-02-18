@@ -4,10 +4,10 @@ import { OrderController } from "../controllers/OrderController";
 import { authMiddleware } from "../middlewares/authMiddleware";
 import { validationMiddleware } from "../middlewares/validationMiddleware";
 import {
-  createOrderSchema,
-  getOrdersSchema,
-  advanceOrderSchema,
-  addServiceSchema,
+	createOrderSchema,
+	getOrdersSchema,
+	advanceOrderSchema,
+	advanceServiceSchema,
 } from "../validators/OrderValidator";
 
 const orderRoutes = Router();
@@ -37,6 +37,10 @@ orderRoutes.delete(
 	"/:id",
 	validationMiddleware(advanceOrderSchema),
 	(req, res) => orderController.delete(req, res),
+);
+
+orderRoutes.patch("/", validationMiddleware(advanceServiceSchema), (req, res) =>
+	orderController.advanceService(req, res),
 );
 
 export { orderRoutes };
